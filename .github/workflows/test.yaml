@@ -17,8 +17,8 @@ jobs:
         url: ${{ secrets.VAULT_ADDR }}
         role: github-actions
         secrets: |
-          kv/main/message/text | MESSAGE_TEXT;
-          kv/main/message/lang | MESSAGE_LANG
+          kv/main/message text | MESSAGE_TEXT;
+          kv/main/message lang | MESSAGE_LANG
 
     - name: Use secret from Vault
       run: |
