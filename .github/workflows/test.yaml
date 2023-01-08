@@ -1,5 +1,7 @@
 name: test
-on: [ workflow_dispatch ]
+on:
+- push
+- workflow_dispatch
 jobs:
   retrieve-secret:
     runs-on: ubuntu-latest
@@ -23,8 +25,8 @@ jobs:
         env | sort
         cat <<EOF
         ====
-        MESSAGE_TEXT: ${steps.secrets.outputs.MESSAGE_TEXT}
-        MESSAGE_LANG: ${steps.secrets.outputs.MESSAGE_LANG}
+        MESSAGE_TEXT: ${{ steps.secrets.outputs.MESSAGE_TEXT }}
+        MESSAGE_LANG: ${{ steps.secrets.outputs.MESSAGE_LANG }}
         EOF
 
     - name: Revoke token
