@@ -12,7 +12,6 @@ jobs:
     - name: Retrieve secret from Vault
       uses: hashicorp/vault-action@v2.4.3
       with:
-        exportToken: true
         method: jwt
         url: ${{ secrets.VAULT_ADDR }}
         role: github-actions
