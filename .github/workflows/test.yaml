@@ -10,7 +10,8 @@ jobs:
       contents: read
     steps:
     - name: Retrieve secret from Vault
-      uses: hashicorp/vault-action@v2.4.3
+      id: secrets
+      uses: hashicorp/vault-action@v2.4.3    
       with:
         method: jwt
         url: ${{ secrets.VAULT_ADDR }}
@@ -21,7 +22,7 @@ jobs:
 
     - name: Use secret from Vault
       run: |
-        env | sort
+        env
         cat <<EOF
         ====
         MESSAGE_TEXT: ${{ steps.secrets.outputs.MESSAGE_TEXT }}
